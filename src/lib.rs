@@ -1,6 +1,7 @@
 use std::result;
 
-pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> { //one can give a wilde card to arguments if not used, kinda usefull
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    //one can give a wilde card to arguments if not used, kinda usefull
     let mut results = Vec::new();
     for line in contents.lines() {
         if line.contains(query) {
@@ -10,10 +11,7 @@ pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> { //one can gi
     results
 }
 
-pub fn search_case_insensitive<'a>(
-    query: &str,
-    contents: &'a str,
-) -> Vec<&'a str> {
+pub fn search_case_insensitive<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
     let query = query.to_lowercase();
     let mut results = Vec::new();
 
@@ -40,7 +38,7 @@ Pick three.";
 
         assert_eq!(vec!["safe, fast, productive."], search(query, contents));
     }
-        #[test]
+    #[test]
     fn case_insensitive() {
         let query = "rUsT";
         let contents = "\
